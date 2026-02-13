@@ -1,769 +1,379 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typography System - AI Resume Builder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fafafa;
-            color: #18181b;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            margin-bottom: 48px;
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #71717a;
-            font-size: 16px;
-        }
-
-        .section {
-            background: white;
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 32px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: #18181b;
-        }
-
-        .text-style-item {
-            padding: 24px;
-            border: 1px solid #e4e4e7;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .text-style-item:hover {
-            border-color: #7c3aed;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
-        }
-
-        .text-style-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .text-style-name {
-            font-weight: 600;
-            color: #27272a;
-            font-size: 14px;
-        }
-
-        .text-style-specs {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .spec-badge {
-            font-size: 12px;
-            padding: 4px 10px;
-            background: #f4f4f5;
-            border-radius: 6px;
-            color: #52525b;
-            font-family: 'Monaco', 'Menlo', monospace;
-        }
-
-        .text-example {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #18181b;
-            margin-top: 8px;
-        }
-
-        /* JSON Container */
-        .json-container {
-            background: #18181b;
-            border-radius: 12px;
-            padding: 24px;
-            position: relative;
-        }
-
-        .json-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .json-title {
-            color: #fafafa;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .copy-btn {
-            background: #3f3f46;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-
-        .copy-btn:hover {
-            background: #52525b;
-        }
-
-        .copy-btn.copied {
-            background: #22c55e;
-        }
-
-        pre {
-            margin: 0;
-            overflow-x: auto;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #fafafa;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: #18181b;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .category-group {
-            margin-bottom: 40px;
-        }
-
-        .category-group:last-child {
-            margin-bottom: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Typography System</h1>
-            <p class="subtitle">AI Resume Builder - Plus Jakarta Sans</p>
-        </header>
-
-        <div class="section">
-            <h2 class="section-title">📝 Text Styles</h2>
-            <div id="text-styles-container"></div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">📋 Raw JSON (Copy & Paste)</h2>
-            <div class="json-container">
-                <div class="json-header">
-                    <div class="json-title">textStyles.json</div>
-                    <button class="copy-btn" onclick="copyJSON()">Copy JSON</button>
-                </div>
-                <pre id="json-output"></pre>
-            </div>
-        </div>
-    </div>
-
-    <div class="toast" id="toast">Copied to clipboard!</div>
-
-    <script>
-        const textStyles = {
-  "fileName": "AI resume builder",
+{
+  "fileName": "Skillbridge",
   "textStyles": [
     {
       "name": "Heading/H1/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Bold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 80,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H1/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Bold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 64,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H1/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Bold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 40,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H2/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
-      "fontSize": 72,
+      "fontFamily": "Inter",
+      "fontWeight": "Semi Bold",
+      "fontSize": 64,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H2/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "ExtraBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 48,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H2/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "ExtraBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 32,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H3/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 48,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H3/Desktop",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
+      "fontSize": 40,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H3/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Bold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 40,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H3/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Bold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 32,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H4/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
-      "fontSize": 32,
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
+      "fontSize": 28,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H4/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 28,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/H4/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 24,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/Subheading/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Medium",
       "fontSize": 24,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/Subheading/Desktop rg",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Regular",
-      "fontSize": 24,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/Subheading/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 22,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Heading/Subheading/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 20,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Large/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Medium",
       "fontSize": 20,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Large/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 18,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Large/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 18,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default regular/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Medium",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default regular/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default regular/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default semibold/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Semi Bold",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default semibold/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Default semibold/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "SemiBold",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 16,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small regular/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small regular/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small regular/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small semibold/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Medium",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small semibold/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Medium",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Small semibold/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
-      "fontWeight": "Medium",
+      "fontFamily": "Inter",
+      "fontWeight": "Regular",
       "fontSize": 14,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Caption/Desktop",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 12,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Caption/Tablet",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 12,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     },
     {
       "name": "Body/Caption/Mobile",
-      "fontFamily": "Plus Jakarta Sans",
+      "fontFamily": "Inter",
       "fontWeight": "Regular",
       "fontSize": 12,
       "letterSpacing": {
         "unit": "PERCENT",
-        "value": 0
+        "value": -1.350000023841858
       },
       "textCase": "ORIGINAL"
     }
   ]
-};
-
-        let currentDevice = 'Desktop';
-
-        // Font weight mapping
-        const fontWeightMap = {
-            'Regular': '400',
-            'Medium': '500',
-            'SemiBold': '600',
-            'Bold': '700',
-            'ExtraBold': '800'
-        };
-
-        function renderTextStyles() {
-            const container = document.getElementById('text-styles-container');
-            container.innerHTML = '';
-            
-            // Group by device first, then category, then subcategory
-            const devices = ['Desktop', 'Tablet', 'Mobile'];
-            
-            devices.forEach(device => {
-                const deviceSection = document.createElement('div');
-                deviceSection.style.marginBottom = '64px';
-                
-                const deviceTitle = document.createElement('h2');
-                deviceTitle.style.fontSize = '28px';
-                deviceTitle.style.fontWeight = '700';
-                deviceTitle.style.marginBottom = '32px';
-                deviceTitle.style.color = '#18181b';
-                deviceTitle.style.borderBottom = '2px solid #e4e4e7';
-                deviceTitle.style.paddingBottom = '12px';
-                deviceTitle.textContent = device;
-                deviceSection.appendChild(deviceTitle);
-                
-                const categories = {};
-                
-                // Filter styles for this device
-                textStyles.textStyles.forEach(style => {
-                    if (style.name.includes(device)) {
-                        const parts = style.name.split('/');
-                        const category = parts[0]; // Heading or Body
-                        const subcategory = parts[1]; // H1, H2, Large, etc.
-                        
-                        if (!categories[category]) {
-                            categories[category] = {};
-                        }
-                        if (!categories[category][subcategory]) {
-                            categories[category][subcategory] = [];
-                        }
-                        categories[category][subcategory].push(style);
-                    }
-                });
-                
-                // Render each category for this device
-                for (const [category, subcategories] of Object.entries(categories)) {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'category-group';
-                    
-                    const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'category-title';
-                    categoryTitle.style.fontSize = '20px';
-                    categoryTitle.style.fontWeight = '700';
-                    categoryTitle.style.marginBottom = '24px';
-                    categoryTitle.style.color = '#27272a';
-                    categoryTitle.textContent = category;
-                    categoryDiv.appendChild(categoryTitle);
-                    
-                    for (const [subcategory, styles] of Object.entries(subcategories)) {
-                        const subcategoryDiv = document.createElement('div');
-                        subcategoryDiv.style.marginBottom = '32px';
-                        
-                        const subcategoryTitle = document.createElement('h4');
-                        subcategoryTitle.style.fontSize = '16px';
-                        subcategoryTitle.style.fontWeight = '600';
-                        subcategoryTitle.style.marginBottom = '12px';
-                        subcategoryTitle.style.color = '#3f3f46';
-                        subcategoryTitle.textContent = subcategory;
-                        subcategoryDiv.appendChild(subcategoryTitle);
-                        
-                        styles.forEach(style => {
-                            const item = document.createElement('div');
-                            item.className = 'text-style-item';
-                            item.onclick = () => copyStyleInfo(style);
-                            
-                            const header = document.createElement('div');
-                            header.className = 'text-style-header';
-                            
-                            const name = document.createElement('div');
-                            name.className = 'text-style-name';
-                            name.textContent = style.name;
-                            
-                            const specs = document.createElement('div');
-                            specs.className = 'text-style-specs';
-                            
-                            const fontSizeBadge = document.createElement('span');
-                            fontSizeBadge.className = 'spec-badge';
-                            fontSizeBadge.textContent = `${style.fontSize}px`;
-                            
-                            const fontWeightBadge = document.createElement('span');
-                            fontWeightBadge.className = 'spec-badge';
-                            fontWeightBadge.textContent = style.fontWeight;
-                            
-                            const fontFamilyBadge = document.createElement('span');
-                            fontFamilyBadge.className = 'spec-badge';
-                            fontFamilyBadge.textContent = style.fontFamily;
-                            
-                            specs.appendChild(fontSizeBadge);
-                            specs.appendChild(fontWeightBadge);
-                            specs.appendChild(fontFamilyBadge);
-                            
-                            header.appendChild(name);
-                            header.appendChild(specs);
-                            
-                            const example = document.createElement('div');
-                            example.className = 'text-example';
-                            example.style.fontSize = `${style.fontSize}px`;
-                            example.style.fontWeight = fontWeightMap[style.fontWeight];
-                            example.textContent = 'The quick brown fox jumps over the lazy dog';
-                            
-                            item.appendChild(header);
-                            item.appendChild(example);
-                            subcategoryDiv.appendChild(item);
-                        });
-                        
-                        categoryDiv.appendChild(subcategoryDiv);
-                    }
-                    
-                    deviceSection.appendChild(categoryDiv);
-                }
-                
-                container.appendChild(deviceSection);
-            });
-        }
-
-        function renderJSON() {
-            const jsonOutput = document.getElementById('json-output');
-            jsonOutput.textContent = JSON.stringify(textStyles, null, 2);
-        }
-
-        function copyStyleInfo(style) {
-            const cssText = `font-family: '${style.fontFamily}', sans-serif;\nfont-size: ${style.fontSize}px;\nfont-weight: ${fontWeightMap[style.fontWeight]};`;
-            navigator.clipboard.writeText(cssText).then(() => {
-                showToast(`Copied CSS for ${style.name}`);
-            });
-        }
-
-        function copyJSON() {
-            const jsonText = JSON.stringify(textStyles, null, 2);
-            navigator.clipboard.writeText(jsonText).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                btn.textContent = 'Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.textContent = 'Copy JSON';
-                    btn.classList.remove('copied');
-                }, 2000);
-                showToast('Full JSON copied to clipboard!');
-            });
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
-        }
-
-        // Initialize
-        renderTextStyles();
-        renderJSON();
-    </script>
-</body>
-</html>
+}
