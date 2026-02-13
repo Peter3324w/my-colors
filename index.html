@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Tokens Viewer</title>
+    <title>Typography System - AI Resume Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #fafafa;
             color: #18181b;
             line-height: 1.6;
@@ -54,145 +57,54 @@
             color: #18181b;
         }
 
-        .category-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 24px 0 16px 0;
-            color: #3f3f46;
-        }
-
-        .category-title:first-child {
-            margin-top: 0;
-        }
-
-        /* Color Swatches */
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .color-swatch {
+        .text-style-item {
+            padding: 24px;
             border: 1px solid #e4e4e7;
             border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 16px;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .color-swatch:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .text-style-item:hover {
+            border-color: #7c3aed;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
         }
 
-        .color-box {
-            width: 100%;
-            height: 80px;
-            border-bottom: 1px solid #e4e4e7;
-        }
-
-        .color-info {
-            padding: 12px;
-            background: white;
-        }
-
-        .color-name {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: #27272a;
-        }
-
-        .color-value {
-            font-size: 12px;
-            color: #71717a;
-            font-family: 'Monaco', 'Menlo', monospace;
-        }
-
-        /* Sizing Tokens */
-        .sizing-list {
-            display: grid;
+        .text-style-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
             gap: 12px;
         }
 
-        .sizing-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e4e4e7;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .sizing-item:hover {
-            background: #f4f4f5;
-        }
-
-        .sizing-name {
-            flex: 1;
-            font-weight: 500;
+        .text-style-name {
+            font-weight: 600;
             color: #27272a;
-        }
-
-        .sizing-value {
-            font-family: 'Monaco', 'Menlo', monospace;
-            color: #71717a;
             font-size: 14px;
         }
 
-        /* Token List */
-        .token-list {
-            display: grid;
-            gap: 8px;
-        }
-
-        .token-item {
+        .text-style-specs {
             display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e4e4e7;
-            cursor: pointer;
-            transition: background 0.2s;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        .token-item:hover {
+        .spec-badge {
+            font-size: 12px;
+            padding: 4px 10px;
             background: #f4f4f5;
-        }
-
-        .token-color-preview {
-            width: 32px;
-            height: 32px;
             border-radius: 6px;
-            margin-right: 12px;
-            border: 1px solid #e4e4e7;
-        }
-
-        .token-name {
-            flex: 1;
-            font-weight: 500;
-            color: #27272a;
-        }
-
-        .token-reference {
-            font-family: 'Monaco', 'Menlo', monospace;
-            color: #71717a;
-            font-size: 13px;
-            margin-right: 12px;
-        }
-
-        .token-hex {
-            font-family: 'Monaco', 'Menlo', monospace;
             color: #52525b;
-            font-size: 13px;
-            background: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid #e4e4e7;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        .text-example {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #18181b;
+            margin-top: 8px;
         }
 
         /* JSON Container */
@@ -265,39 +177,33 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .category-group {
+            margin-bottom: 40px;
+        }
+
+        .category-group:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Design Tokens</h1>
-            <p class="subtitle">Complete design system tokens with primitives, sizing, and functional tokens</p>
+            <h1>Typography System</h1>
+            <p class="subtitle">AI Resume Builder - Plus Jakarta Sans</p>
         </header>
 
-        <!-- Primitives Section -->
         <div class="section">
-            <h2 class="section-title">🎨 Primitive Colors</h2>
-            <div id="primitives-container"></div>
+            <h2 class="section-title">📝 Text Styles</h2>
+            <div id="text-styles-container"></div>
         </div>
 
-        <!-- Sizing Section -->
-        <div class="section">
-            <h2 class="section-title">📏 Sizing Tokens</h2>
-            <div id="sizing-container"></div>
-        </div>
-
-        <!-- Functional Tokens Section -->
-        <div class="section">
-            <h2 class="section-title">⚡ Functional Tokens</h2>
-            <div id="tokens-container"></div>
-        </div>
-
-        <!-- Raw JSON Section -->
         <div class="section">
             <h2 class="section-title">📋 Raw JSON (Copy & Paste)</h2>
             <div class="json-container">
                 <div class="json-header">
-                    <div class="json-title">tokens.json</div>
+                    <div class="json-title">textStyles.json</div>
                     <button class="copy-btn" onclick="copyJSON()">Copy JSON</button>
                 </div>
                 <pre id="json-output"></pre>
@@ -308,572 +214,532 @@
     <div class="toast" id="toast">Copied to clipboard!</div>
 
     <script>
-        const tokenData = {
-  "primitives": {
-    "Gray": {
-      "50": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fafafa"
+        const textStyles = {
+  "fileName": "AI resume builder",
+  "textStyles": [
+    {
+      "name": "Heading/H1/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Bold",
+      "fontSize": 80,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#f4f4f5"
-      },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#e4e4e7"
-      },
-      "300": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#d4d4d8"
-      },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#a1a1aa"
-      },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#71717a"
-      },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#52525b"
-      },
-      "700": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#3f3f46"
-      },
-      "800": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#27272a"
-      },
-      "950": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#18181b"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Neutral": {
-      "50": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fafafa"
+    {
+      "name": "Heading/H1/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Bold",
+      "fontSize": 64,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#e4e4e7"
-      },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#a1a1aa"
-      },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#71717a"
-      },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#52525b"
-      },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#3f3f46"
-      },
-      "700": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#27272a"
-      },
-      "800": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#18181b"
-      },
-      "900": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#09090b"
-      },
-      "White": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#ffffff"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Brand": {
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#7c3aed"
+    {
+      "name": "Heading/H1/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Bold",
+      "fontSize": 40,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "700": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#6d28d9"
-      },
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#f3e8ff"
-      },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#e9d5ff"
-      },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#c084fc"
-      },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#a855f7"
-      },
-      "900": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#581c87"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Accent": {
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#38bdf8"
+    {
+      "name": "Heading/H2/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 72,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#0ea5e9"
-      },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#0284c7"
-      },
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#e0f2fe"
-      },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#bae6fd"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Success": {
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#dcfce7"
+    {
+      "name": "Heading/H2/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "ExtraBold",
+      "fontSize": 48,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#bbf7d0"
-      },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#4ade80"
-      },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#22c55e"
-      },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#16a34a"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Warning": {
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fef3c7"
+    {
+      "name": "Heading/H2/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "ExtraBold",
+      "fontSize": 32,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fde68a"
-      },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fbbf24"
-      },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#f59e0b"
-      },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#d97706"
-      }
+      "textCase": "ORIGINAL"
     },
-    "Error": {
-      "100": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fee2e2"
+    {
+      "name": "Heading/H3/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 48,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "200": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#fecaca"
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H3/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Bold",
+      "fontSize": 40,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "400": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#f87171"
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H3/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Bold",
+      "fontSize": 32,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "500": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#ef4444"
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H4/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 32,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
       },
-      "600": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "#dc2626"
-      }
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H4/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 28,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/H4/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 24,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/Subheading/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Medium",
+      "fontSize": 24,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/Subheading/Desktop rg",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 24,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/Subheading/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 22,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Heading/Subheading/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 20,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Large/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 20,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Large/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Large/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default regular/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Medium",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default regular/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default regular/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default semibold/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default semibold/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default semibold/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "SemiBold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small regular/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small regular/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small regular/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small semibold/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Medium",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small semibold/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Medium",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Small semibold/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Medium",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Caption/Desktop",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 12,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Caption/Tablet",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 12,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Caption/Mobile",
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": "Regular",
+      "fontSize": 12,
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL"
     }
-  },
-  "sizing": {
-    "Spacing": {
-      "4": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 4
-      },
-      "8": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 8
-      },
-      "12": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 12
-      },
-      "16": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 16
-      },
-      "20": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 20
-      },
-      "24": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 24
-      },
-      "32": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 32
-      },
-      "40": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 40
-      },
-      "48": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 48
-      },
-      "64": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 64
-      }
-    },
-    "Radius": {
-      "xs": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 2
-      },
-      "sm": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 4
-      },
-      "md": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 8
-      },
-      "lg": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 12
-      },
-      "xl": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 16
-      },
-      "full": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "number",
-        "$value": 9999
-      }
-    }
-  },
-  "tokens": {
-    "Functional": {
-      "background-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Neutral.White}"
-      },
-      "background-secondary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.50}"
-      },
-      "background-tertiary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.100}"
-      },
-      "text-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.950}"
-      },
-      "text-secondary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.600}"
-      },
-      "text-tertiary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.400}"
-      },
-      "text-inverse": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Neutral.White}"
-      },
-      "border-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.200}"
-      },
-      "border-secondary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Gray.100}"
-      },
-      "brand-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Brand.600}"
-      },
-      "brand-hover": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Brand.700}"
-      },
-      "brand-light": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Brand.100}"
-      },
-      "accent-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Accent.500}"
-      },
-      "accent-light": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Accent.100}"
-      },
-      "success-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Success.500}"
-      },
-      "success-light": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Success.100}"
-      },
-      "warning-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Warning.500}"
-      },
-      "warning-light": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Warning.100}"
-      },
-      "error-primary": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Error.500}"
-      },
-      "error-light": {
-        "$scopes": ["ALL_SCOPES"],
-        "$type": "color",
-        "$value": "{Error.100}"
-      }
-    }
-  }
+  ]
 };
 
-        // Resolve token references to actual hex values
-        function resolveToken(value) {
-            if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
-                const path = value.slice(1, -1).split('.');
-                let current = tokenData.primitives;
-                for (const key of path) {
-                    current = current[key];
-                    if (!current) return value;
-                }
-                return current.$value || value;
-            }
-            return value;
-        }
+        let currentDevice = 'Desktop';
 
-        // Render Primitives
-        function renderPrimitives() {
-            const container = document.getElementById('primitives-container');
+        // Font weight mapping
+        const fontWeightMap = {
+            'Regular': '400',
+            'Medium': '500',
+            'SemiBold': '600',
+            'Bold': '700',
+            'ExtraBold': '800'
+        };
+
+        function renderTextStyles() {
+            const container = document.getElementById('text-styles-container');
+            container.innerHTML = '';
             
-            for (const [category, colors] of Object.entries(tokenData.primitives)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+            // Group by device first, then category, then subcategory
+            const devices = ['Desktop', 'Tablet', 'Mobile'];
+            
+            devices.forEach(device => {
+                const deviceSection = document.createElement('div');
+                deviceSection.style.marginBottom = '64px';
                 
-                const grid = document.createElement('div');
-                grid.className = 'color-grid';
+                const deviceTitle = document.createElement('h2');
+                deviceTitle.style.fontSize = '28px';
+                deviceTitle.style.fontWeight = '700';
+                deviceTitle.style.marginBottom = '32px';
+                deviceTitle.style.color = '#18181b';
+                deviceTitle.style.borderBottom = '2px solid #e4e4e7';
+                deviceTitle.style.paddingBottom = '12px';
+                deviceTitle.textContent = device;
+                deviceSection.appendChild(deviceTitle);
                 
-                for (const [name, data] of Object.entries(colors)) {
-                    if (data.$value) {
-                        const swatch = document.createElement('div');
-                        swatch.className = 'color-swatch';
-                        swatch.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
-                        swatch.innerHTML = `
-                            <div class="color-box" style="background-color: ${data.$value}"></div>
-                            <div class="color-info">
-                                <div class="color-name">${name}</div>
-                                <div class="color-value">${data.$value}</div>
-                            </div>
-                        `;
-                        grid.appendChild(swatch);
+                const categories = {};
+                
+                // Filter styles for this device
+                textStyles.textStyles.forEach(style => {
+                    if (style.name.includes(device)) {
+                        const parts = style.name.split('/');
+                        const category = parts[0]; // Heading or Body
+                        const subcategory = parts[1]; // H1, H2, Large, etc.
+                        
+                        if (!categories[category]) {
+                            categories[category] = {};
+                        }
+                        if (!categories[category][subcategory]) {
+                            categories[category][subcategory] = [];
+                        }
+                        categories[category][subcategory].push(style);
                     }
-                }
+                });
                 
-                categoryDiv.appendChild(grid);
-                container.appendChild(categoryDiv);
-            }
-        }
-
-        // Render Sizing
-        function renderSizing() {
-            const container = document.getElementById('sizing-container');
-            
-            for (const [category, sizes] of Object.entries(tokenData.sizing)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
-                
-                const list = document.createElement('div');
-                list.className = 'sizing-list';
-                
-                for (const [name, data] of Object.entries(sizes)) {
-                    const item = document.createElement('div');
-                    item.className = 'sizing-item';
-                    const displayValue = category === 'Radius' && name === 'full' ? '9999px' : `${data.$value}px`;
-                    item.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
-                    item.innerHTML = `
-                        <div class="sizing-name">${name}</div>
-                        <div class="sizing-value">${displayValue}</div>
-                    `;
-                    list.appendChild(item);
-                }
-                
-                categoryDiv.appendChild(list);
-                container.appendChild(categoryDiv);
-            }
-        }
-
-        // Render Tokens
-        function renderTokens() {
-            const container = document.getElementById('tokens-container');
-            
-            for (const [category, tokens] of Object.entries(tokenData.tokens)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
-                
-                const list = document.createElement('div');
-                list.className = 'token-list';
-                
-                for (const [name, data] of Object.entries(tokens)) {
-                    const hexValue = resolveToken(data.$value);
-                    const item = document.createElement('div');
-                    item.className = 'token-item';
-                    item.onclick = () => copyToClipboard(hexValue, `${category}/${name}`);
+                // Render each category for this device
+                for (const [category, subcategories] of Object.entries(categories)) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'category-group';
                     
-                    const isColor = data.$type === 'color';
-                    item.innerHTML = `
-                        ${isColor ? `<div class="token-color-preview" style="background-color: ${hexValue}"></div>` : ''}
-                        <div class="token-name">${name}</div>
-                        <div class="token-reference">${data.$value}</div>
-                        <div class="token-hex">${hexValue}</div>
-                    `;
-                    list.appendChild(item);
+                    const categoryTitle = document.createElement('h3');
+                    categoryTitle.className = 'category-title';
+                    categoryTitle.style.fontSize = '20px';
+                    categoryTitle.style.fontWeight = '700';
+                    categoryTitle.style.marginBottom = '24px';
+                    categoryTitle.style.color = '#27272a';
+                    categoryTitle.textContent = category;
+                    categoryDiv.appendChild(categoryTitle);
+                    
+                    for (const [subcategory, styles] of Object.entries(subcategories)) {
+                        const subcategoryDiv = document.createElement('div');
+                        subcategoryDiv.style.marginBottom = '32px';
+                        
+                        const subcategoryTitle = document.createElement('h4');
+                        subcategoryTitle.style.fontSize = '16px';
+                        subcategoryTitle.style.fontWeight = '600';
+                        subcategoryTitle.style.marginBottom = '12px';
+                        subcategoryTitle.style.color = '#3f3f46';
+                        subcategoryTitle.textContent = subcategory;
+                        subcategoryDiv.appendChild(subcategoryTitle);
+                        
+                        styles.forEach(style => {
+                            const item = document.createElement('div');
+                            item.className = 'text-style-item';
+                            item.onclick = () => copyStyleInfo(style);
+                            
+                            const header = document.createElement('div');
+                            header.className = 'text-style-header';
+                            
+                            const name = document.createElement('div');
+                            name.className = 'text-style-name';
+                            name.textContent = style.name;
+                            
+                            const specs = document.createElement('div');
+                            specs.className = 'text-style-specs';
+                            
+                            const fontSizeBadge = document.createElement('span');
+                            fontSizeBadge.className = 'spec-badge';
+                            fontSizeBadge.textContent = `${style.fontSize}px`;
+                            
+                            const fontWeightBadge = document.createElement('span');
+                            fontWeightBadge.className = 'spec-badge';
+                            fontWeightBadge.textContent = style.fontWeight;
+                            
+                            const fontFamilyBadge = document.createElement('span');
+                            fontFamilyBadge.className = 'spec-badge';
+                            fontFamilyBadge.textContent = style.fontFamily;
+                            
+                            specs.appendChild(fontSizeBadge);
+                            specs.appendChild(fontWeightBadge);
+                            specs.appendChild(fontFamilyBadge);
+                            
+                            header.appendChild(name);
+                            header.appendChild(specs);
+                            
+                            const example = document.createElement('div');
+                            example.className = 'text-example';
+                            example.style.fontSize = `${style.fontSize}px`;
+                            example.style.fontWeight = fontWeightMap[style.fontWeight];
+                            example.textContent = 'The quick brown fox jumps over the lazy dog';
+                            
+                            item.appendChild(header);
+                            item.appendChild(example);
+                            subcategoryDiv.appendChild(item);
+                        });
+                        
+                        categoryDiv.appendChild(subcategoryDiv);
+                    }
+                    
+                    deviceSection.appendChild(categoryDiv);
                 }
                 
-                categoryDiv.appendChild(list);
-                container.appendChild(categoryDiv);
-            }
-        }
-
-        // Render JSON
-        function renderJSON() {
-            const jsonOutput = document.getElementById('json-output');
-            jsonOutput.textContent = JSON.stringify(tokenData, null, 2);
-        }
-
-        // Copy to clipboard
-        function copyToClipboard(text, label) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(`Copied ${label}: ${text}`);
+                container.appendChild(deviceSection);
             });
         }
 
-        // Copy entire JSON
+        function renderJSON() {
+            const jsonOutput = document.getElementById('json-output');
+            jsonOutput.textContent = JSON.stringify(textStyles, null, 2);
+        }
+
+        function copyStyleInfo(style) {
+            const cssText = `font-family: '${style.fontFamily}', sans-serif;\nfont-size: ${style.fontSize}px;\nfont-weight: ${fontWeightMap[style.fontWeight]};`;
+            navigator.clipboard.writeText(cssText).then(() => {
+                showToast(`Copied CSS for ${style.name}`);
+            });
+        }
+
         function copyJSON() {
-            const jsonText = JSON.stringify(tokenData, null, 2);
+            const jsonText = JSON.stringify(textStyles, null, 2);
             navigator.clipboard.writeText(jsonText).then(() => {
                 const btn = document.querySelector('.copy-btn');
                 btn.textContent = 'Copied!';
@@ -886,7 +752,6 @@
             });
         }
 
-        // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -897,9 +762,7 @@
         }
 
         // Initialize
-        renderPrimitives();
-        renderSizing();
-        renderTokens();
+        renderTextStyles();
         renderJSON();
     </script>
 </body>
