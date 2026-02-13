@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Tokens Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fafafa;
+            color: #18181b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #71717a;
+            font-size: 16px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #18181b;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 16px 0;
+            color: #3f3f46;
+        }
+
+        .category-title:first-child {
+            margin-top: 0;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .color-swatch {
+            border: 1px solid #e4e4e7;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-box {
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .color-info {
+            padding: 12px;
+            background: white;
+        }
+
+        .color-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #27272a;
+        }
+
+        .color-value {
+            font-size: 12px;
+            color: #71717a;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        /* Sizing Tokens */
+        .sizing-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .sizing-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sizing-item:hover {
+            background: #f4f4f5;
+        }
+
+        .sizing-name {
+            flex: 1;
+            font-weight: 500;
+            color: #27272a;
+        }
+
+        .sizing-value {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #71717a;
+            font-size: 14px;
+        }
+
+        /* Token List */
+        .token-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .token-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .token-item:hover {
+            background: #f4f4f5;
+        }
+
+        .token-color-preview {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 12px;
+            border: 1px solid #e4e4e7;
+        }
+
+        .token-name {
+            flex: 1;
+            font-weight: 500;
+            color: #27272a;
+        }
+
+        .token-reference {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #71717a;
+            font-size: 13px;
+            margin-right: 12px;
+        }
+
+        .token-hex {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #52525b;
+            font-size: 13px;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #e4e4e7;
+        }
+
+        /* JSON Container */
+        .json-container {
+            background: #18181b;
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+        }
+
+        .json-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .json-title {
+            color: #fafafa;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: #3f3f46;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #52525b;
+        }
+
+        .copy-btn.copied {
+            background: #22c55e;
+        }
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #fafafa;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #18181b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Design Tokens</h1>
+            <p class="subtitle">Complete design system tokens with primitives, sizing, and functional tokens</p>
+        </header>
+
+        <!-- Primitives Section -->
+        <div class="section">
+            <h2 class="section-title">🎨 Primitive Colors</h2>
+            <div id="primitives-container"></div>
+        </div>
+
+        <!-- Sizing Section -->
+        <div class="section">
+            <h2 class="section-title">📏 Sizing Tokens</h2>
+            <div id="sizing-container"></div>
+        </div>
+
+        <!-- Functional Tokens Section -->
+        <div class="section">
+            <h2 class="section-title">⚡ Functional Tokens</h2>
+            <div id="tokens-container"></div>
+        </div>
+
+        <!-- Raw JSON Section -->
+        <div class="section">
+            <h2 class="section-title">📋 Raw JSON (Copy & Paste)</h2>
+            <div class="json-container">
+                <div class="json-header">
+                    <div class="json-title">tokens.json</div>
+                    <button class="copy-btn" onclick="copyJSON()">Copy JSON</button>
+                </div>
+                <pre id="json-output"></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        const tokenData = {
+  "primitives": {
+    "Gray": {
+      "50": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fafafa"
+      },
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#f4f4f5"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#e4e4e7"
+      },
+      "300": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#d4d4d8"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#a1a1aa"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#71717a"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#52525b"
+      },
+      "700": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#3f3f46"
+      },
+      "800": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#27272a"
+      },
+      "950": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#18181b"
+      }
+    },
+    "Neutral": {
+      "50": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fafafa"
+      },
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#e4e4e7"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#a1a1aa"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#71717a"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#52525b"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#3f3f46"
+      },
+      "700": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#27272a"
+      },
+      "800": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#18181b"
+      },
+      "900": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#09090b"
+      },
+      "White": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#ffffff"
+      }
+    },
+    "Brand": {
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#7c3aed"
+      },
+      "700": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#6d28d9"
+      },
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#f3e8ff"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#e9d5ff"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#c084fc"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#a855f7"
+      },
+      "900": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#581c87"
+      }
+    },
+    "Accent": {
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#38bdf8"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#0ea5e9"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#0284c7"
+      },
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#e0f2fe"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#bae6fd"
+      }
+    },
+    "Success": {
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#dcfce7"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#bbf7d0"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#4ade80"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#22c55e"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#16a34a"
+      }
+    },
+    "Warning": {
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fef3c7"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fde68a"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fbbf24"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#f59e0b"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#d97706"
+      }
+    },
+    "Error": {
+      "100": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fee2e2"
+      },
+      "200": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#fecaca"
+      },
+      "400": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#f87171"
+      },
+      "500": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#ef4444"
+      },
+      "600": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "#dc2626"
+      }
+    }
+  },
+  "sizing": {
+    "Spacing": {
+      "4": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 4
+      },
+      "8": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 8
+      },
+      "12": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 12
+      },
+      "16": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 16
+      },
+      "20": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 20
+      },
+      "24": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 24
+      },
+      "32": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 32
+      },
+      "40": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 40
+      },
+      "48": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 48
+      },
+      "64": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 64
+      }
+    },
+    "Radius": {
+      "xs": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 2
+      },
+      "sm": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 4
+      },
+      "md": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 8
+      },
+      "lg": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 12
+      },
+      "xl": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 16
+      },
+      "full": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "number",
+        "$value": 9999
+      }
+    }
+  },
+  "tokens": {
+    "Functional": {
+      "background-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Neutral.White}"
+      },
+      "background-secondary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.50}"
+      },
+      "background-tertiary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.100}"
+      },
+      "text-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.950}"
+      },
+      "text-secondary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.600}"
+      },
+      "text-tertiary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.400}"
+      },
+      "text-inverse": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Neutral.White}"
+      },
+      "border-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.200}"
+      },
+      "border-secondary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Gray.100}"
+      },
+      "brand-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Brand.600}"
+      },
+      "brand-hover": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Brand.700}"
+      },
+      "brand-light": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Brand.100}"
+      },
+      "accent-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Accent.500}"
+      },
+      "accent-light": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Accent.100}"
+      },
+      "success-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Success.500}"
+      },
+      "success-light": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Success.100}"
+      },
+      "warning-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Warning.500}"
+      },
+      "warning-light": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Warning.100}"
+      },
+      "error-primary": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Error.500}"
+      },
+      "error-light": {
+        "$scopes": ["ALL_SCOPES"],
+        "$type": "color",
+        "$value": "{Error.100}"
+      }
+    }
+  }
+};
+
+        // Resolve token references to actual hex values
+        function resolveToken(value) {
+            if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
+                const path = value.slice(1, -1).split('.');
+                let current = tokenData.primitives;
+                for (const key of path) {
+                    current = current[key];
+                    if (!current) return value;
+                }
+                return current.$value || value;
+            }
+            return value;
+        }
+
+        // Render Primitives
+        function renderPrimitives() {
+            const container = document.getElementById('primitives-container');
+            
+            for (const [category, colors] of Object.entries(tokenData.primitives)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                
+                const grid = document.createElement('div');
+                grid.className = 'color-grid';
+                
+                for (const [name, data] of Object.entries(colors)) {
+                    if (data.$value) {
+                        const swatch = document.createElement('div');
+                        swatch.className = 'color-swatch';
+                        swatch.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
+                        swatch.innerHTML = `
+                            <div class="color-box" style="background-color: ${data.$value}"></div>
+                            <div class="color-info">
+                                <div class="color-name">${name}</div>
+                                <div class="color-value">${data.$value}</div>
+                            </div>
+                        `;
+                        grid.appendChild(swatch);
+                    }
+                }
+                
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Render Sizing
+        function renderSizing() {
+            const container = document.getElementById('sizing-container');
+            
+            for (const [category, sizes] of Object.entries(tokenData.sizing)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                
+                const list = document.createElement('div');
+                list.className = 'sizing-list';
+                
+                for (const [name, data] of Object.entries(sizes)) {
+                    const item = document.createElement('div');
+                    item.className = 'sizing-item';
+                    const displayValue = category === 'Radius' && name === 'full' ? '9999px' : `${data.$value}px`;
+                    item.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
+                    item.innerHTML = `
+                        <div class="sizing-name">${name}</div>
+                        <div class="sizing-value">${displayValue}</div>
+                    `;
+                    list.appendChild(item);
+                }
+                
+                categoryDiv.appendChild(list);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Render Tokens
+        function renderTokens() {
+            const container = document.getElementById('tokens-container');
+            
+            for (const [category, tokens] of Object.entries(tokenData.tokens)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                
+                const list = document.createElement('div');
+                list.className = 'token-list';
+                
+                for (const [name, data] of Object.entries(tokens)) {
+                    const hexValue = resolveToken(data.$value);
+                    const item = document.createElement('div');
+                    item.className = 'token-item';
+                    item.onclick = () => copyToClipboard(hexValue, `${category}/${name}`);
+                    
+                    const isColor = data.$type === 'color';
+                    item.innerHTML = `
+                        ${isColor ? `<div class="token-color-preview" style="background-color: ${hexValue}"></div>` : ''}
+                        <div class="token-name">${name}</div>
+                        <div class="token-reference">${data.$value}</div>
+                        <div class="token-hex">${hexValue}</div>
+                    `;
+                    list.appendChild(item);
+                }
+                
+                categoryDiv.appendChild(list);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Render JSON
+        function renderJSON() {
+            const jsonOutput = document.getElementById('json-output');
+            jsonOutput.textContent = JSON.stringify(tokenData, null, 2);
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text, label) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`Copied ${label}: ${text}`);
+            });
+        }
+
+        // Copy entire JSON
+        function copyJSON() {
+            const jsonText = JSON.stringify(tokenData, null, 2);
+            navigator.clipboard.writeText(jsonText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy JSON';
+                    btn.classList.remove('copied');
+                }, 2000);
+                showToast('Full JSON copied to clipboard!');
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Initialize
+        renderPrimitives();
+        renderSizing();
+        renderTokens();
+        renderJSON();
+    </script>
+</body>
+</html>
