@@ -1422,30 +1422,48 @@
         function renderTokens() {
             const container = document.getElementById('tokens-container');
             
-            for (const [category, tokens] of Object.entries(tokenData.tokens)) {
+            for (const [category, subcategories] of Object.entries(tokenData.tokens)) {
                 const categoryDiv = document.createElement('div');
                 categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
                 
-                const list = document.createElement('div');
-                list.className = 'token-list';
-                
-                for (const [name, data] of Object.entries(tokens)) {
-                    const hexValue = resolveToken(data.$value);
-                    const item = document.createElement('div');
-                    item.className = 'token-item';
-                    item.onclick = () => copyToClipboard(hexValue, `${category}/${name}`);
+                // Check if this is nested (has subcategories)
+                for (const [subcat, tokens] of Object.entries(subcategories)) {
+                    const subcatDiv = document.createElement('div');
+                    subcatDiv.style.marginBottom = '24px';
                     
-                    const isColor = data.$type === 'color';
-                    item.innerHTML = `
-                        ${isColor ? `<div class="token-color-preview" style="background-color: ${hexValue}"></div>` : ''}
-                        <div class="token-name">${name}</div>
-                        <div class="token-reference">${data.$value}</div>
-                        <div class="token-hex">${hexValue}</div>
-                    `;
-                    list.appendChild(item);
+                    const subcatTitle = document.createElement('h4');
+                    subcatTitle.style.fontSize = '16px';
+                    subcatTitle.style.fontWeight = '600';
+                    subcatTitle.style.marginBottom = '12px';
+                    subcatTitle.style.color = '#52525b';
+                    subcatTitle.textContent = subcat;
+                    subcatDiv.appendChild(subcatTitle);
+                    
+                    const list = document.createElement('div');
+                    list.className = 'token-list';
+                    
+                    for (const [name, data] of Object.entries(tokens)) {
+                        if (data.$value) {
+                            const hexValue = resolveToken(data.$value);
+                            const item = document.createElement('div');
+                            item.className = 'token-item';
+                            item.onclick = () => copyToClipboard(hexValue, `${subcat}/${name}`);
+                            
+                            const isColor = data.$type === 'color';
+                            item.innerHTML = `
+                                ${isColor ? `<div class="token-color-preview" style="background-color: ${hexValue}"></div>` : ''}
+                                <div class="token-name">${name}</div>
+                                <div class="token-reference">${data.$value}</div>
+                                <div class="token-hex">${hexValue}</div>
+                            `;
+                            list.appendChild(item);
+                        }
+                    }
+                    
+                    subcatDiv.appendChild(list);
+                    categoryDiv.appendChild(subcatDiv);
                 }
                 
-                categoryDiv.appendChild(list);
                 container.appendChild(categoryDiv);
             }
         }
