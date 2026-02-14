@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typography System - Skillbridge</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Design Tokens</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +12,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #fafafa;
             color: #18181b;
             line-height: 1.6;
@@ -57,54 +54,145 @@
             color: #18181b;
         }
 
-        .text-style-item {
-            padding: 24px;
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 16px 0;
+            color: #3f3f46;
+        }
+
+        .category-title:first-child {
+            margin-top: 0;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .color-swatch {
             border: 1px solid #e4e4e7;
             border-radius: 8px;
-            margin-bottom: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .text-style-item:hover {
-            border-color: #7c3aed;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+        .color-swatch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .text-style-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 12px;
+        .color-box {
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid #e4e4e7;
         }
 
-        .text-style-name {
+        .color-info {
+            padding: 12px;
+            background: white;
+        }
+
+        .color-name {
+            font-size: 13px;
             font-weight: 600;
+            margin-bottom: 4px;
             color: #27272a;
-            font-size: 14px;
         }
 
-        .text-style-specs {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .spec-badge {
+        .color-value {
             font-size: 12px;
-            padding: 4px 10px;
-            background: #f4f4f5;
-            border-radius: 6px;
-            color: #52525b;
+            color: #71717a;
             font-family: 'Monaco', 'Menlo', monospace;
         }
 
-        .text-example {
-            font-family: 'Inter', sans-serif;
-            color: #18181b;
-            margin-top: 8px;
+        /* Sizing Tokens */
+        .sizing-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .sizing-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sizing-item:hover {
+            background: #f4f4f5;
+        }
+
+        .sizing-name {
+            flex: 1;
+            font-weight: 500;
+            color: #27272a;
+        }
+
+        .sizing-value {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #71717a;
+            font-size: 14px;
+        }
+
+        /* Token List */
+        .token-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .token-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .token-item:hover {
+            background: #f4f4f5;
+        }
+
+        .token-color-preview {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 12px;
+            border: 1px solid #e4e4e7;
+        }
+
+        .token-name {
+            flex: 1;
+            font-weight: 500;
+            color: #27272a;
+        }
+
+        .token-reference {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #71717a;
+            font-size: 13px;
+            margin-right: 12px;
+        }
+
+        .token-hex {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: #52525b;
+            font-size: 13px;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #e4e4e7;
         }
 
         /* JSON Container */
@@ -177,33 +265,39 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        .category-group {
-            margin-bottom: 40px;
-        }
-
-        .category-group:last-child {
-            margin-bottom: 0;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Typography System</h1>
-            <p class="subtitle">Skillbridge - Inter</p>
+            <h1>Design Tokens</h1>
+            <p class="subtitle">Complete design system tokens with primitives, sizing, and functional tokens</p>
         </header>
 
+        <!-- Primitives Section -->
         <div class="section">
-            <h2 class="section-title">📝 Text Styles</h2>
-            <div id="text-styles-container"></div>
+            <h2 class="section-title">🎨 Primitive Colors</h2>
+            <div id="primitives-container"></div>
         </div>
 
+        <!-- Sizing Section -->
+        <div class="section">
+            <h2 class="section-title">📏 Sizing Tokens</h2>
+            <div id="sizing-container"></div>
+        </div>
+
+        <!-- Functional Tokens Section -->
+        <div class="section">
+            <h2 class="section-title">⚡ UI Color Tokens</h2>
+            <div id="tokens-container"></div>
+        </div>
+
+        <!-- Raw JSON Section -->
         <div class="section">
             <h2 class="section-title">📋 Raw JSON (Copy & Paste)</h2>
             <div class="json-container">
                 <div class="json-header">
-                    <div class="json-title">textStyles.json</div>
+                    <div class="json-title">tokens.json</div>
                     <button class="copy-btn" onclick="copyJSON()">Copy JSON</button>
                 </div>
                 <pre id="json-output"></pre>
@@ -214,537 +308,1164 @@
     <div class="toast" id="toast">Copied to clipboard!</div>
 
     <script>
-        const textStyles = {
-  "fileName": "Skillbridge",
-  "textStyles": [
-    {
-      "name": "Heading/H1/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 80,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H1/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 64,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H1/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 40,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H2/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Semi Bold",
-      "fontSize": 64,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H2/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 48,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H2/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 32,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H3/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 48,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H3/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 40,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H3/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 40,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H3/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 32,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H4/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 28,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H4/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 28,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/H4/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 24,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/Subheading/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 24,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/Subheading/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 22,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Heading/Subheading/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 20,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Large/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Medium",
-      "fontSize": 20,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Large/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 18,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Large/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 18,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default regular/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default regular/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default regular/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default semibold/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Semi Bold",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default semibold/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Default semibold/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small regular/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small regular/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small regular/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small semibold/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small semibold/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Small semibold/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Caption/Desktop",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 12,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Caption/Tablet",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 12,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "Body/Caption/Mobile",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 12,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": -1.350000023841858
-      },
-      "textCase": "ORIGINAL"
-    }
-  ]
+        const tokenData = {
+        "primitives": {
+                "Base": {
+                        "White": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffffff"
+                        },
+                        "Black": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#000000"
+                        }
+                },
+                "Neutrals": {
+                        "Gray-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#f5f5f5"
+                        },
+                        "Gray-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ededed"
+                        },
+                        "Gray-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#e3e3e3"
+                        },
+                        "Gray-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#b3b3b3"
+                        },
+                        "Gray-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#8f8f8f"
+                        },
+                        "Gray-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#6b6b6b"
+                        },
+                        "Gray-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#525252"
+                        },
+                        "Gray-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#3d3d3d"
+                        },
+                        "Gray-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#212121"
+                        }
+                },
+                "Blue": {
+                        "Blue-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#eff6ff"
+                        },
+                        "Blue-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#dbeafe"
+                        },
+                        "Blue-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#bfdbfe"
+                        },
+                        "Blue-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#93c5fd"
+                        },
+                        "Blue-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#60a5fa"
+                        },
+                        "Blue-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#3b82f6"
+                        },
+                        "Blue-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#2563eb"
+                        },
+                        "Blue-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1d4ed8"
+                        },
+                        "Blue-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1e40af"
+                        },
+                        "Blue-900": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1e3a8a"
+                        }
+                },
+                "Brand": {
+                        "Blue-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#eff6ff"
+                        },
+                        "Blue-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#dbeafe"
+                        },
+                        "Blue-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#bfdbfe"
+                        },
+                        "Blue-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#93c5fd"
+                        },
+                        "Blue-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#60a5fa"
+                        },
+                        "Blue-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#3b82f6"
+                        },
+                        "Blue-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#2563eb"
+                        },
+                        "Blue-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#0047aa"
+                        },
+                        "Blue-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1e40af"
+                        },
+                        "Blue-900": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1e3a8a"
+                        }
+                },
+                "Charcoal": {
+                        "Charcoal-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#374151"
+                        },
+                        "Charcoal-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1f2937"
+                        },
+                        "Charcoal-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#111827"
+                        },
+                        "Charcoal-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#0f172a"
+                        },
+                        "Charcoal-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#0c1220"
+                        }
+                },
+                "Slate": {
+                        "Slate-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#9ca3af"
+                        },
+                        "Slate-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#6b7280"
+                        },
+                        "Slate-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#4b5563"
+                        },
+                        "Slate-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#374151"
+                        },
+                        "Slate-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#1f2937"
+                        }
+                },
+                "Stone": {
+                        "Stone-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#d1d5db"
+                        },
+                        "Stone-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#9ca3af"
+                        },
+                        "Stone-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#6b7280"
+                        },
+                        "Stone-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#4b5563"
+                        },
+                        "Stone-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#374151"
+                        }
+                },
+                "Error": {
+                        "Red-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#fff0f0"
+                        },
+                        "Red-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffe0e0"
+                        },
+                        "Red-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffb3b3"
+                        },
+                        "Red-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ff8080"
+                        },
+                        "Red-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ff4d4d"
+                        },
+                        "Red-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#f52222"
+                        },
+                        "Red-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#cc1b1b"
+                        },
+                        "Red-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#a31414"
+                        },
+                        "Red-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#7a0e0e"
+                        }
+                },
+                "Warning": {
+                        "Orange-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#fff5e6"
+                        },
+                        "Orange-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffeacc"
+                        },
+                        "Orange-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffd099"
+                        },
+                        "Orange-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ffab66"
+                        },
+                        "Orange-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ff8633"
+                        },
+                        "Orange-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ff6200"
+                        },
+                        "Orange-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#d45100"
+                        },
+                        "Orange-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#aa4100"
+                        },
+                        "Orange-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#7a2e00"
+                        }
+                },
+                "Success": {
+                        "Green-50": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#e6f9ee"
+                        },
+                        "Green-100": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ccf2dd"
+                        },
+                        "Green-200": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#99e5bb"
+                        },
+                        "Green-300": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#66d899"
+                        },
+                        "Green-400": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#33cb77"
+                        },
+                        "Green-500": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#00be55"
+                        },
+                        "Green-600": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#009c47"
+                        },
+                        "Green-700": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#007a38"
+                        },
+                        "Green-800": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#005729"
+                        }
+                },
+                "Other colors": {
+                        "Red": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#ff0000"
+                        },
+                        "Blue": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#0656d0"
+                        },
+                        "Green": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#03ed07"
+                        },
+                        "Yellow": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#e6ff05"
+                        },
+                        "Purple": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "color",
+                                "$value": "#c807ef"
+                        }
+                }
+        },
+        "sizing": {
+                "Spacing": {
+                        "Spacing-2xs": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 4
+                        },
+                        "Spacing-xs": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 8
+                        },
+                        "Spacing-sm": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 12
+                        },
+                        "Spacing-md": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 16
+                        },
+                        "Spacing-lg": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 24
+                        },
+                        "Spacing-xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 32
+                        },
+                        "Spacing-2xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 48
+                        },
+                        "Spacing-3xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 64
+                        },
+                        "Spacing-4xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 80
+                        },
+                        "Spacing-5xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 96
+                        }
+                },
+                "Font size": {
+                        "Font-size-xs": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 12
+                        },
+                        "Font-size-sm": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 14
+                        },
+                        "Font-size-md": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 16
+                        },
+                        "Font-size-lg": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 20
+                        },
+                        "Font-size-xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 24
+                        },
+                        "Font-size-2xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 32
+                        },
+                        "Font-size-3xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 48
+                        },
+                        "Font-size-4xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 64
+                        },
+                        "Font-size-5xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 72
+                        }
+                }
+        },
+        "tokens": {
+                "UI Colors": {
+                        "Text": {
+                                "Primary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Charcoal.Charcoal-100}"
+                                },
+                                "Secondry": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$hiddenFromPublishing": true,
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Slate.Slate-300}"
+                                },
+                                "Tertiary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$hiddenFromPublishing": true,
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Stone.Stone-200}"
+                                },
+                                "Primary-dark-surface": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-50}"
+                                },
+                                "Secondary-dark-surface": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-200}"
+                                },
+                                "Error": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Error.Red-500}"
+                                },
+                                "Warning": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Warning.Orange-500}"
+                                },
+                                "Success": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Success.Green-500}"
+                                },
+                                "Brand": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Brand.Blue-600}"
+                                }
+                        },
+                        "Surface": {
+                                "Brand": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Brand.Blue-600}"
+                                },
+                                "Background-primary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-50}"
+                                },
+                                "Background-secondary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-100}"
+                                },
+                                "Surface-primary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Base.White}"
+                                },
+                                "Surface-secondary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-200}"
+                                },
+                                "Buttons": {
+                                        "Button-primary": {
+                                                "$scopes": [
+                                                        "ALL_SCOPES"
+                                                ],
+                                                "$type": "color",
+                                                "$libraryName": "",
+                                                "$collectionName": "Primitives",
+                                                "$value": "{Brand.Blue-600}"
+                                        },
+                                        "Button-primary-hover": {
+                                                "$scopes": [
+                                                        "ALL_SCOPES"
+                                                ],
+                                                "$type": "color",
+                                                "$libraryName": "",
+                                                "$collectionName": "Primitives",
+                                                "$value": "{Brand.Blue-700}"
+                                        },
+                                        "Button-secodary": {
+                                                "$scopes": [
+                                                        "ALL_SCOPES"
+                                                ],
+                                                "$type": "color",
+                                                "$libraryName": "",
+                                                "$collectionName": "Primitives",
+                                                "$value": "{Charcoal.Charcoal-100}"
+                                        },
+                                        "Button-secondary-hover": {
+                                                "$scopes": [
+                                                        "ALL_SCOPES"
+                                                ],
+                                                "$type": "color",
+                                                "$libraryName": "",
+                                                "$collectionName": "Primitives",
+                                                "$value": "{Charcoal.Charcoal-200}"
+                                        }
+                                },
+                                "Error": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Error.Red-500}"
+                                },
+                                "Warning": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Warning.Orange-500}"
+                                },
+                                "Success": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Success.Green-500}"
+                                }
+                        },
+                        "Border": {
+                                "Primary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-200}"
+                                },
+                                "Secondary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Neutrals.Gray-400}"
+                                },
+                                "Brand": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Brand.Blue-400}"
+                                },
+                                "Error": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Error.Red-400}"
+                                },
+                                "Warning": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Warning.Orange-400}"
+                                },
+                                "Success": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Success.Green-400}"
+                                }
+                        },
+                        "Accent": {
+                                "Primary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Brand.Blue-500}"
+                                },
+                                "Secondary": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Brand.Blue-300}"
+                                }
+                        },
+                        "Categorial colors": {
+                                "Cat-Color-surface": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Other colors.Red}"
+                                },
+                                "Cat-Color-surface 2": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Other colors.Blue}"
+                                },
+                                "Cat-Color-surface 3": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Other colors.Green}"
+                                },
+                                "Cat-Color-surface 4": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Other colors.Yellow}"
+                                },
+                                "Cat-Color-surface 5": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "Primitives",
+                                        "$value": "{Other colors.Purple}"
+                                }
+                        }
+                }
+        }
 };
 
-        // Font weight mapping
-        const fontWeightMap = {
-            'Regular': '400',
-            'Medium': '500',
-            'Semi Bold': '600',
-            'SemiBold': '600',
-            'Bold': '700',
-            'ExtraBold': '800'
-        };
+        // Resolve token references to actual hex values
+        function resolveToken(value) {
+            if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
+                const path = value.slice(1, -1).split('.');
+                let current = tokenData.primitives;
+                for (const key of path) {
+                    current = current[key];
+                    if (!current) return value;
+                }
+                return current.$value || value;
+            }
+            return value;
+        }
 
-        function renderTextStyles() {
-            const container = document.getElementById('text-styles-container');
-            container.innerHTML = '';
+        // Render Primitives
+        function renderPrimitives() {
+            const container = document.getElementById('primitives-container');
             
-            // Group by device first, then category, then subcategory
-            const devices = ['Desktop', 'Tablet', 'Mobile'];
-            
-            devices.forEach(device => {
-                const deviceSection = document.createElement('div');
-                deviceSection.style.marginBottom = '64px';
+            for (const [category, colors] of Object.entries(tokenData.primitives)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
                 
-                const deviceTitle = document.createElement('h2');
-                deviceTitle.style.fontSize = '28px';
-                deviceTitle.style.fontWeight = '700';
-                deviceTitle.style.marginBottom = '32px';
-                deviceTitle.style.color = '#18181b';
-                deviceTitle.style.borderBottom = '2px solid #e4e4e7';
-                deviceTitle.style.paddingBottom = '12px';
-                deviceTitle.textContent = device;
-                deviceSection.appendChild(deviceTitle);
+                const grid = document.createElement('div');
+                grid.className = 'color-grid';
                 
-                const categories = {};
-                
-                // Filter styles for this device
-                textStyles.textStyles.forEach(style => {
-                    if (style.name.includes(device)) {
-                        const parts = style.name.split('/');
-                        const category = parts[0]; // Heading or Body
-                        const subcategory = parts[1]; // H1, H2, Large, etc.
-                        
-                        if (!categories[category]) {
-                            categories[category] = {};
-                        }
-                        if (!categories[category][subcategory]) {
-                            categories[category][subcategory] = [];
-                        }
-                        categories[category][subcategory].push(style);
+                for (const [name, data] of Object.entries(colors)) {
+                    if (data.$value) {
+                        const swatch = document.createElement('div');
+                        swatch.className = 'color-swatch';
+                        swatch.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
+                        swatch.innerHTML = `
+                            <div class="color-box" style="background-color: ${data.$value}"></div>
+                            <div class="color-info">
+                                <div class="color-name">${name}</div>
+                                <div class="color-value">${data.$value}</div>
+                            </div>
+                        `;
+                        grid.appendChild(swatch);
                     }
-                });
-                
-                // Render each category for this device
-                for (const [category, subcategories] of Object.entries(categories)) {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'category-group';
-                    
-                    const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'category-title';
-                    categoryTitle.style.fontSize = '20px';
-                    categoryTitle.style.fontWeight = '700';
-                    categoryTitle.style.marginBottom = '24px';
-                    categoryTitle.style.color = '#27272a';
-                    categoryTitle.textContent = category;
-                    categoryDiv.appendChild(categoryTitle);
-                    
-                    for (const [subcategory, styles] of Object.entries(subcategories)) {
-                        const subcategoryDiv = document.createElement('div');
-                        subcategoryDiv.style.marginBottom = '32px';
-                        
-                        const subcategoryTitle = document.createElement('h4');
-                        subcategoryTitle.style.fontSize = '16px';
-                        subcategoryTitle.style.fontWeight = '600';
-                        subcategoryTitle.style.marginBottom = '12px';
-                        subcategoryTitle.style.color = '#3f3f46';
-                        subcategoryTitle.textContent = subcategory;
-                        subcategoryDiv.appendChild(subcategoryTitle);
-                        
-                        styles.forEach(style => {
-                            const item = document.createElement('div');
-                            item.className = 'text-style-item';
-                            item.onclick = () => copyStyleInfo(style);
-                            
-                            const header = document.createElement('div');
-                            header.className = 'text-style-header';
-                            
-                            const name = document.createElement('div');
-                            name.className = 'text-style-name';
-                            name.textContent = style.name;
-                            
-                            const specs = document.createElement('div');
-                            specs.className = 'text-style-specs';
-                            
-                            const fontSizeBadge = document.createElement('span');
-                            fontSizeBadge.className = 'spec-badge';
-                            fontSizeBadge.textContent = `${style.fontSize}px`;
-                            
-                            const fontWeightBadge = document.createElement('span');
-                            fontWeightBadge.className = 'spec-badge';
-                            fontWeightBadge.textContent = style.fontWeight;
-                            
-                            const letterSpacingBadge = document.createElement('span');
-                            letterSpacingBadge.className = 'spec-badge';
-                            letterSpacingBadge.textContent = `${style.letterSpacing.value}%`;
-                            
-                            const fontFamilyBadge = document.createElement('span');
-                            fontFamilyBadge.className = 'spec-badge';
-                            fontFamilyBadge.textContent = style.fontFamily;
-                            
-                            specs.appendChild(fontSizeBadge);
-                            specs.appendChild(fontWeightBadge);
-                            specs.appendChild(letterSpacingBadge);
-                            specs.appendChild(fontFamilyBadge);
-                            
-                            header.appendChild(name);
-                            header.appendChild(specs);
-                            
-                            const example = document.createElement('div');
-                            example.className = 'text-example';
-                            example.style.fontSize = `${style.fontSize}px`;
-                            example.style.fontWeight = fontWeightMap[style.fontWeight];
-                            example.style.letterSpacing = `${style.letterSpacing.value / 100}em`;
-                            example.textContent = 'The quick brown fox jumps over the lazy dog';
-                            
-                            item.appendChild(header);
-                            item.appendChild(example);
-                            subcategoryDiv.appendChild(item);
-                        });
-                        
-                        categoryDiv.appendChild(subcategoryDiv);
-                    }
-                    
-                    deviceSection.appendChild(categoryDiv);
                 }
                 
-                container.appendChild(deviceSection);
-            });
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            }
         }
 
+        // Render Sizing
+        function renderSizing() {
+            const container = document.getElementById('sizing-container');
+            
+            for (const [category, sizes] of Object.entries(tokenData.sizing)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                
+                const list = document.createElement('div');
+                list.className = 'sizing-list';
+                
+                for (const [name, data] of Object.entries(sizes)) {
+                    const item = document.createElement('div');
+                    item.className = 'sizing-item';
+                    const displayValue = typeof data.$value === 'number' ? `${data.$value}px` : data.$value;
+                    item.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
+                    item.innerHTML = `
+                        <div class="sizing-name">${name}</div>
+                        <div class="sizing-value">${displayValue}</div>
+                    `;
+                    list.appendChild(item);
+                }
+                
+                categoryDiv.appendChild(list);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Render Tokens
+        function renderTokens() {
+            const container = document.getElementById('tokens-container');
+            
+            for (const [category, tokens] of Object.entries(tokenData.tokens)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                
+                const list = document.createElement('div');
+                list.className = 'token-list';
+                
+                for (const [name, data] of Object.entries(tokens)) {
+                    const hexValue = resolveToken(data.$value);
+                    const item = document.createElement('div');
+                    item.className = 'token-item';
+                    item.onclick = () => copyToClipboard(hexValue, `${category}/${name}`);
+                    
+                    const isColor = data.$type === 'color';
+                    item.innerHTML = `
+                        ${isColor ? `<div class="token-color-preview" style="background-color: ${hexValue}"></div>` : ''}
+                        <div class="token-name">${name}</div>
+                        <div class="token-reference">${data.$value}</div>
+                        <div class="token-hex">${hexValue}</div>
+                    `;
+                    list.appendChild(item);
+                }
+                
+                categoryDiv.appendChild(list);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Render JSON
         function renderJSON() {
             const jsonOutput = document.getElementById('json-output');
-            jsonOutput.textContent = JSON.stringify(textStyles, null, 2);
+            jsonOutput.textContent = JSON.stringify(tokenData, null, 2);
         }
 
-        function copyStyleInfo(style) {
-            const cssText = `font-family: '${style.fontFamily}', sans-serif;\nfont-size: ${style.fontSize}px;\nfont-weight: ${fontWeightMap[style.fontWeight]};\nletter-spacing: ${style.letterSpacing.value / 100}em;`;
-            navigator.clipboard.writeText(cssText).then(() => {
-                showToast(`Copied CSS for ${style.name}`);
+        // Copy to clipboard
+        function copyToClipboard(text, label) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`Copied ${label}: ${text}`);
             });
         }
 
+        // Copy entire JSON
         function copyJSON() {
-            const jsonText = JSON.stringify(textStyles, null, 2);
+            const jsonText = JSON.stringify(tokenData, null, 2);
             navigator.clipboard.writeText(jsonText).then(() => {
                 const btn = document.querySelector('.copy-btn');
                 btn.textContent = 'Copied!';
@@ -757,6 +1478,7 @@
             });
         }
 
+        // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -767,7 +1489,9 @@
         }
 
         // Initialize
-        renderTextStyles();
+        renderPrimitives();
+        renderSizing();
+        renderTokens();
         renderJSON();
     </script>
 </body>
