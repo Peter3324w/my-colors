@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Tokens</title>
+    <title>Design Tokens - WealthWise</title>
     <style>
         * {
             margin: 0;
@@ -271,7 +271,7 @@
     <div class="container">
         <header>
             <h1>Design Tokens</h1>
-            <p class="subtitle">Complete design system tokens with primitives, sizing, and functional tokens</p>
+            <p class="subtitle">WealthWise - Complete design system tokens</p>
         </header>
 
         <!-- Primitives Section -->
@@ -282,13 +282,13 @@
 
         <!-- Sizing Section -->
         <div class="section">
-            <h2 class="section-title">📏 Sizing Tokens</h2>
+            <h2 class="section-title">📏 Dimension Tokens</h2>
             <div id="sizing-container"></div>
         </div>
 
-        <!-- Functional Tokens Section -->
+        <!-- Semantic Tokens Section -->
         <div class="section">
-            <h2 class="section-title">⚡ UI Color Tokens</h2>
+            <h2 class="section-title">⚡ Semantic Tokens</h2>
             <div id="tokens-container"></div>
         </div>
 
@@ -310,641 +310,802 @@
     <script>
         const tokenData = {
         "primitives": {
-                "Base": {
-                        "White": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffffff"
-                        },
-                        "Black": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#000000"
-                        }
-                },
-                "Neutrals": {
-                        "Gray-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#f5f5f5"
-                        },
-                        "Gray-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ededed"
-                        },
-                        "Gray-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#e3e3e3"
-                        },
-                        "Gray-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#b3b3b3"
-                        },
-                        "Gray-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#8f8f8f"
-                        },
-                        "Gray-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#6b6b6b"
-                        },
-                        "Gray-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#525252"
-                        },
-                        "Gray-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#3d3d3d"
-                        },
-                        "Gray-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#212121"
-                        }
-                },
-                "Blue": {
-                        "Blue-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#eff6ff"
-                        },
-                        "Blue-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#dbeafe"
-                        },
-                        "Blue-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#bfdbfe"
-                        },
-                        "Blue-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#93c5fd"
-                        },
-                        "Blue-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#60a5fa"
-                        },
-                        "Blue-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#3b82f6"
-                        },
-                        "Blue-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#2563eb"
-                        },
-                        "Blue-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1d4ed8"
-                        },
-                        "Blue-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1e40af"
-                        },
-                        "Blue-900": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1e3a8a"
-                        }
-                },
-                "Brand": {
-                        "Blue-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#eff6ff"
-                        },
-                        "Blue-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#dbeafe"
-                        },
-                        "Blue-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#bfdbfe"
-                        },
-                        "Blue-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#93c5fd"
-                        },
-                        "Blue-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#60a5fa"
-                        },
-                        "Blue-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#3b82f6"
-                        },
-                        "Blue-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#2563eb"
-                        },
-                        "Blue-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#0047aa"
-                        },
-                        "Blue-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1e40af"
-                        },
-                        "Blue-900": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1e3a8a"
-                        }
-                },
-                "Charcoal": {
-                        "Charcoal-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#374151"
-                        },
-                        "Charcoal-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1f2937"
-                        },
-                        "Charcoal-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#111827"
-                        },
-                        "Charcoal-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#0f172a"
-                        },
-                        "Charcoal-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#0c1220"
-                        }
-                },
-                "Slate": {
-                        "Slate-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#9ca3af"
-                        },
-                        "Slate-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#6b7280"
-                        },
-                        "Slate-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#4b5563"
-                        },
-                        "Slate-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#374151"
-                        },
-                        "Slate-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#1f2937"
-                        }
-                },
-                "Stone": {
-                        "Stone-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#d1d5db"
-                        },
-                        "Stone-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#9ca3af"
-                        },
-                        "Stone-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#6b7280"
-                        },
-                        "Stone-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#4b5563"
-                        },
-                        "Stone-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#374151"
-                        }
-                },
-                "Error": {
-                        "Red-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#fff0f0"
-                        },
-                        "Red-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffe0e0"
-                        },
-                        "Red-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffb3b3"
-                        },
-                        "Red-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ff8080"
-                        },
-                        "Red-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ff4d4d"
-                        },
-                        "Red-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#f52222"
-                        },
-                        "Red-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#cc1b1b"
-                        },
-                        "Red-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#a31414"
-                        },
-                        "Red-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#7a0e0e"
-                        }
-                },
-                "Warning": {
-                        "Orange-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#fff5e6"
-                        },
-                        "Orange-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffeacc"
-                        },
-                        "Orange-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffd099"
-                        },
-                        "Orange-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ffab66"
-                        },
-                        "Orange-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ff8633"
-                        },
-                        "Orange-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ff6200"
-                        },
-                        "Orange-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#d45100"
-                        },
-                        "Orange-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#aa4100"
-                        },
-                        "Orange-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#7a2e00"
-                        }
-                },
-                "Success": {
-                        "Green-50": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#e6f9ee"
-                        },
-                        "Green-100": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ccf2dd"
-                        },
-                        "Green-200": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#99e5bb"
-                        },
-                        "Green-300": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#66d899"
-                        },
-                        "Green-400": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#33cb77"
-                        },
-                        "Green-500": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#00be55"
-                        },
-                        "Green-600": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#009c47"
-                        },
-                        "Green-700": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#007a38"
-                        },
-                        "Green-800": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#005729"
-                        }
-                },
-                "Other colors": {
-                        "Red": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#ff0000"
-                        },
-                        "Blue": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#0656d0"
-                        },
-                        "Green": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#03ed07"
-                        },
-                        "Yellow": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#e6ff05"
+                "Color": {
+                        "Neutral": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f8f9fa"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f1f3f5"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#e9ecef"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#dee2e6"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#ced4da"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#adb5bd"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#868e96"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#495057"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#343a40"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#212529"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#080910"
+                                }
+                        },
+                        "Slate": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f8fafc"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f1f5f9"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#e2e8f0"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#cbd5e1"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#94a3b8"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#64748b"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#475569"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#334155"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1e293b"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#0f172a"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#020617"
+                                }
+                        },
+                        "Gray": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fafafa"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f4f4f5"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#e4e4e7"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#d4d4d8"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#a1a1aa"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#7a7a88"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#52525b"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#3f3f46"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#27272a"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#18181b"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#09090b"
+                                }
                         },
                         "Purple": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "color",
-                                "$value": "#c807ef"
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#faf5ff"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f3e8ff"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#e9d5ff"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#d8b4fe"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#c084fc"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#a78bfa"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#8b5cf6"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#7c3aed"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#6d28d9"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#5b21b6"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#4c1d95"
+                                }
+                        },
+                        "Blue": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#eff6ff"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#dbeafe"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#bfdbfe"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#93c5fd"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#60a5fa"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#3b82f6"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#2563eb"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1d4ed8"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1e40af"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1e3a8a"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#172554"
+                                }
+                        },
+                        "Success": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#ecfdf5"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#d1fae5"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#a7f3d0"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#6ee7b7"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#34d399"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#10b981"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#059669"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#047857"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#065f46"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#064e3b"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#022c22"
+                                }
+                        },
+                        "Error": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fef2f2"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fee2e2"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fecaca"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fca5a5"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f87171"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#ef4444"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#dc2626"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#b91c1c"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#991b1b"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#7f1d1d"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#450a0a"
+                                }
+                        },
+                        "Warning": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fffbeb"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fef3c7"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fde68a"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fcd34d"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#fbbf24"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#f59e0b"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#d97706"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#b45309"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#92400e"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#78350f"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#451a03"
+                                }
+                        },
+                        "Info": {
+                                "50": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#eff6ff"
+                                },
+                                "100": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#dbeafe"
+                                },
+                                "200": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#bfdbfe"
+                                },
+                                "300": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#93c5fd"
+                                },
+                                "400": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#60a5fa"
+                                },
+                                "500": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#3b82f6"
+                                },
+                                "600": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#2563eb"
+                                },
+                                "700": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1d4ed8"
+                                },
+                                "800": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1e40af"
+                                },
+                                "900": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#1e3a8a"
+                                },
+                                "950": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#172554"
+                                }
+                        },
+                        "Base": {
+                                "white": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#ffffff"
+                                },
+                                "black": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$value": "#000000"
+                                }
                         }
                 }
         },
         "sizing": {
                 "Spacing": {
-                        "Spacing-2xs": {
+                        "xs": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 4
                         },
-                        "Spacing-xs": {
+                        "sm": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 8
                         },
-                        "Spacing-sm": {
+                        "md": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 12
                         },
-                        "Spacing-md": {
+                        "lg": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 16
                         },
-                        "Spacing-lg": {
+                        "xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 24
                         },
-                        "Spacing-xl": {
+                        "2xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 32
                         },
-                        "Spacing-2xl": {
+                        "3xl": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 40
+                        },
+                        "4xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 48
                         },
-                        "Spacing-3xl": {
+                        "5xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 64
                         },
-                        "Spacing-4xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 80
-                        },
-                        "Spacing-5xl": {
+                        "8xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
@@ -952,269 +1113,118 @@
                                 "$value": 96
                         }
                 },
-                "Font size": {
-                        "Font-size-xs": {
+                "Radius": {
+                        "none": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 0
+                        },
+                        "sm": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 4
+                        },
+                        "md": {
+                                "$scopes": [
+                                        "ALL_SCOPES"
+                                ],
+                                "$type": "float",
+                                "$value": 8
+                        },
+                        "lg": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 12
                         },
-                        "Font-size-sm": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 14
-                        },
-                        "Font-size-md": {
+                        "xl": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
                                 "$value": 16
                         },
-                        "Font-size-lg": {
+                        "full": {
                                 "$scopes": [
                                         "ALL_SCOPES"
                                 ],
                                 "$type": "float",
-                                "$value": 20
-                        },
-                        "Font-size-xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 24
-                        },
-                        "Font-size-2xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 32
-                        },
-                        "Font-size-3xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 48
-                        },
-                        "Font-size-4xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 64
-                        },
-                        "Font-size-5xl": {
-                                "$scopes": [
-                                        "ALL_SCOPES"
-                                ],
-                                "$type": "float",
-                                "$value": 72
+                                "$value": 9999
                         }
                 }
         },
         "tokens": {
-                "UI Colors": {
-                        "Text": {
+                "Semantic": {
+                        "Background": {
                                 "Primary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Charcoal.Charcoal-100}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Neutral.950}"
                                 },
-                                "Secondry": {
+                                "Secondary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
-                                        "$hiddenFromPublishing": true,
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Slate.Slate-300}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.900}"
                                 },
                                 "Tertiary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
-                                        "$hiddenFromPublishing": true,
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Stone.Stone-200}"
-                                },
-                                "Primary-dark-surface": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-50}"
-                                },
-                                "Secondary-dark-surface": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-200}"
-                                },
-                                "Error": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Error.Red-500}"
-                                },
-                                "Warning": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Warning.Orange-500}"
-                                },
-                                "Success": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Success.Green-500}"
-                                },
-                                "Brand": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Brand.Blue-600}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.800}"
                                 }
                         },
                         "Surface": {
-                                "Brand": {
+                                "Primary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Brand.Blue-600}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.800}"
                                 },
-                                "Background-primary": {
+                                "Secondary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-50}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.700}"
                                 },
-                                "Background-secondary": {
+                                "Tertiary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-100}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.600}"
                                 },
-                                "Surface-primary": {
+                                "Quantary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Base.White}"
-                                },
-                                "Surface-secondary": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-200}"
-                                },
-                                "Buttons": {
-                                        "Button-primary": {
-                                                "$scopes": [
-                                                        "ALL_SCOPES"
-                                                ],
-                                                "$type": "color",
-                                                "$libraryName": "",
-                                                "$collectionName": "Primitives",
-                                                "$value": "{Brand.Blue-600}"
-                                        },
-                                        "Button-primary-hover": {
-                                                "$scopes": [
-                                                        "ALL_SCOPES"
-                                                ],
-                                                "$type": "color",
-                                                "$libraryName": "",
-                                                "$collectionName": "Primitives",
-                                                "$value": "{Brand.Blue-700}"
-                                        },
-                                        "Button-secodary": {
-                                                "$scopes": [
-                                                        "ALL_SCOPES"
-                                                ],
-                                                "$type": "color",
-                                                "$libraryName": "",
-                                                "$collectionName": "Primitives",
-                                                "$value": "{Charcoal.Charcoal-100}"
-                                        },
-                                        "Button-secondary-hover": {
-                                                "$scopes": [
-                                                        "ALL_SCOPES"
-                                                ],
-                                                "$type": "color",
-                                                "$libraryName": "",
-                                                "$collectionName": "Primitives",
-                                                "$value": "{Charcoal.Charcoal-200}"
-                                        }
-                                },
-                                "Error": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Error.Red-500}"
-                                },
-                                "Warning": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Warning.Orange-500}"
-                                },
-                                "Success": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Success.Green-500}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.100}"
                                 }
                         },
                         "Border": {
@@ -1224,8 +1234,8 @@
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-200}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.700}"
                                 },
                                 "Secondary": {
                                         "$scopes": [
@@ -1233,55 +1243,28 @@
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Neutrals.Gray-400}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Slate.600}"
                                 },
-                                "Brand": {
+                                "Focus": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Brand.Blue-400}"
-                                },
-                                "Error": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Error.Red-400}"
-                                },
-                                "Warning": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Warning.Orange-400}"
-                                },
-                                "Success": {
-                                        "$scopes": [
-                                                "ALL_SCOPES"
-                                        ],
-                                        "$type": "color",
-                                        "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Success.Green-400}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Purple.700}"
                                 }
                         },
-                        "Accent": {
+                        "Text": {
                                 "Primary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Brand.Blue-500}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Base.white}"
                                 },
                                 "Secondary": {
                                         "$scopes": [
@@ -1289,55 +1272,104 @@
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Brand.Blue-300}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Gray.300}"
+                                },
+                                "Muted": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Gray.500}"
+                                },
+                                "Light Surface": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Gray.950}"
                                 }
                         },
-                        "Categorial colors": {
-                                "Cat-Color-surface": {
+                        "Brand": {
+                                "Primary": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Other colors.Red}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Purple.900}"
                                 },
-                                "Cat-Color-surface 2": {
+                                "Primary-Hover": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Other colors.Blue}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Purple.950}"
                                 },
-                                "Cat-Color-surface 3": {
+                                "Accent-Text": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Other colors.Green}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Purple.700}"
+                                }
+                        },
+                        "Success": {
+                                "Base": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Success.500}"
                                 },
-                                "Cat-Color-surface 4": {
+                                "Light": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Other colors.Yellow}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Success.400}"
                                 },
-                                "Cat-Color-surface 5": {
+                                "BG": {
                                         "$scopes": [
                                                 "ALL_SCOPES"
                                         ],
                                         "$type": "color",
                                         "$libraryName": "",
-                                        "$collectionName": "Primitives",
-                                        "$value": "{Other colors.Purple}"
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Success.950}"
+                                }
+                        },
+                        "Error": {
+                                "Base": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Error.500}"
+                                },
+                                "BG": {
+                                        "$scopes": [
+                                                "ALL_SCOPES"
+                                        ],
+                                        "$type": "color",
+                                        "$libraryName": "",
+                                        "$collectionName": "WealthWise_01.Primitives",
+                                        "$value": "{Color.Error.950}"
                                 }
                         }
                 }
@@ -1362,31 +1394,34 @@
         function renderPrimitives() {
             const container = document.getElementById('primitives-container');
             
-            for (const [category, colors] of Object.entries(tokenData.primitives)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
-                
-                const grid = document.createElement('div');
-                grid.className = 'color-grid';
-                
-                for (const [name, data] of Object.entries(colors)) {
-                    if (data.$value) {
-                        const swatch = document.createElement('div');
-                        swatch.className = 'color-swatch';
-                        swatch.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
-                        swatch.innerHTML = `
-                            <div class="color-box" style="background-color: ${data.$value}"></div>
-                            <div class="color-info">
-                                <div class="color-name">${name}</div>
-                                <div class="color-value">${data.$value}</div>
-                            </div>
-                        `;
-                        grid.appendChild(swatch);
+            for (const [topCategory, categories] of Object.entries(tokenData.primitives)) {
+                // For WealthWise, primitives are nested under "Color"
+                for (const [category, colors] of Object.entries(categories)) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.innerHTML = `<h3 class="category-title">${category}</h3>`;
+                    
+                    const grid = document.createElement('div');
+                    grid.className = 'color-grid';
+                    
+                    for (const [name, data] of Object.entries(colors)) {
+                        if (data.$value) {
+                            const swatch = document.createElement('div');
+                            swatch.className = 'color-swatch';
+                            swatch.onclick = () => copyToClipboard(data.$value, `${category}.${name}`);
+                            swatch.innerHTML = `
+                                <div class="color-box" style="background-color: ${data.$value}"></div>
+                                <div class="color-info">
+                                    <div class="color-name">${name}</div>
+                                    <div class="color-value">${data.$value}</div>
+                                </div>
+                            `;
+                            grid.appendChild(swatch);
+                        }
                     }
+                    
+                    categoryDiv.appendChild(grid);
+                    container.appendChild(categoryDiv);
                 }
-                
-                categoryDiv.appendChild(grid);
-                container.appendChild(categoryDiv);
             }
         }
 
